@@ -13,3 +13,5 @@ function findElementExistInArray(array, target) {
 
 console.log(findElementExistInArray(array, target));
 
+// Big-O = O(n) Linear Time Complexity
+

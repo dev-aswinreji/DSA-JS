@@ -10,3 +10,7 @@ function recursiveFibonacci(n) {
 console.log(recursiveFibonacci(0));  // output 0
 console.log(recursiveFibonacci(1));  // output 1
 console.log(recursiveFibonacci(4));  // output 8
+
+// O(n) Iteration
+
+// Big-O = O(n^2) Quadratic time complexity

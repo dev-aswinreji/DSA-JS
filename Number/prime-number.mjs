@@ -46,3 +46,7 @@ console.log(isPrime(5)); //true
 console.log(isPrime(4)); //false
 
 console.log(isPrime(16)); //false
+
+//If n = 100 Iteration is sqrt(100) = 10
+
+//Big-O O(sqrt(N))

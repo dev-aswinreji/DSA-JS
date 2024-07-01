@@ -31,6 +31,8 @@ function isPowerOf2(n) {
     return true
 }
 
+//Big O = O(logn) In each iteration we are reducing the value of n by half 
+// Input size is reduced by half - O(logn)
 
 console.log(isPowerOf2(2)); //true
 

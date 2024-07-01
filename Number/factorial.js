@@ -13,6 +13,7 @@ console.log(factorial(1));  //1! = 1
 
 console.log(factorial(5)); //5! = 120
 
+//Big-O = O(n)
 
 // In this case we can avoid i starting from 1 because it always give
 //  i * i = 1 (when i =1 ) so it has no effect in that loop

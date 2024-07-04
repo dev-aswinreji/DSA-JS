@@ -1,48 +1,63 @@
 
 
 class Node {
-    constructor(value){
+    constructor(value) {
         this.value = value
         this.next = null
     }
 }
 
-class LinkedList{
+class LinkedList {
     constructor() {
         this.head = null
         this.size = 0
     }
 
-    isEmpty(){
-       return this.size === 0
+    isEmpty() {
+        return this.size === 0
     }
 
-    getSize(){
+    getSize() {
         return this.size
     }
 
-    prepend(value){
+    prepend(value) {
         const node = new Node(value)
-        if(this.isEmpty()){
+        if (this.isEmpty()) {
             this.head = node
-        }else{
+        } else {
             node.next = this.head
             this.head = node
         }
-        this.size ++
+        this.size++
     }
 
-    print(){
-        if(this.isEmpty()){
-            console.log('list is empty');
+    append(value) {
+        const node = new Node(value)
+        if (this.isEmpty()) {
+            this.head = node
         }else{
+            let prev = this.head
+            while(prev.next){
+            prev = prev.next
+            }
+            prev.next = node
+            console.log(prev.next,'prev');
+        }
+        this.size++
+    }
+
+    print() {
+        if (this.isEmpty()) {
+            console.log('object');
+        } else {
             let curr = this.head
             let listValues = ''
-            while(curr){
+            while (curr) {
                 listValues += `${curr.value} `
                 curr = curr.next
             }
-            console.log(listValues,'list values are showing');
+            console.log(listValues, 'list values are showing');
         }
     }
 
@@ -50,14 +65,16 @@ class LinkedList{
 
 const list = new LinkedList()
 
-console.log(list.isEmpty(),'is list Empty');
-console.log(list.getSize(),'size of linked list');
+console.log(list.isEmpty(), 'is list Empty');
+console.log(list.getSize(), 'size of linked list');
 
 list.prepend(5)
 list.prepend(6)
 
-console.log(list.isEmpty(),'is list Empty');
-console.log(list.getSize(),'size of linked list');
+list.append(7)
+
+console.log(list.isEmpty(), 'is list Empty');
+console.log(list.getSize(), 'size of linked list');
 
 
 list.print()

@@ -56,10 +56,13 @@ class LinkedList {
         }else{
             const node = new Node(value)
             let prev = this.head
-            for(i = 0; i< index - 1; i++){
+            console.log(prev,'prev abve lop');
+            for(let i = 0; i< index - 1; i++){
                 prev = prev.next
+                console.log(prev,'prev in loop');
             }
             node.next = prev.next
+            console.log(prev.next,'prev next');
             prev.next = node
             this.size++
         }
@@ -86,17 +89,18 @@ const list = new LinkedList()
 console.log(list.isEmpty(), 'is list Empty');
 console.log(list.getSize(), 'size of linked list');
 
-list.prepend(5)
-list.prepend(6)
 
-list.append(7)
+list.prepend(7)
+list.prepend(8)
+list.prepend(9)
+list.prepend(10)
 
 console.log(list.isEmpty(), 'is list Empty');
 console.log(list.getSize(), 'size of linked list');
 
 
-list.print()
+// list.print()
 
-list.insert(10,0)
+list.insert(10,2)
 
 list.print()

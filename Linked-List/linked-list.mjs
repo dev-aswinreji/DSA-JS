@@ -32,38 +32,42 @@ class LinkedList {
         this.size++
     }
 
-    insert(value, index) {
-        if (index < 0 || index > this.size) {
-            return
-        }
-        if (index === 0) {
-            this.prepend(value)
-        }
-        if (index > 0) {
-            const node = new Node(value)
-            let prev = this.head
-            for (let i = 0; i < index - 1; i++) {
-                prev = prev.next
-            }
-            node.next = prev.next
-            prev.next = node
-
-            this.size++
-        }
+   insert(value,index){
+    if(index < 0 || index > this.size){
+        return 
     }
-
-    append(value) {
+    if(index === 0){
+        this.prepend(value)
+    }
+    if(index > 0){
         const node = new Node(value)
+        console.log(node,'node is showing');
         let prev = this.head
-        while (prev.next) {
+        for(let i = 0 ; i< index - 1 ; i++){
             prev = prev.next
+            console.log('for loop');
         }
+        node.next = prev.next
         prev.next = node
+    
+        this.size++
     }
+   }
+
+   append(value){
+    const node = new Node(value)
+    let prev = this.head
+    while(prev.next){
+        prev = prev.next
+    }
+    node.next = prev.next
+    prev.next = node
+    
+   }
 
     print() {
         if (this.isEmpty()) {
-            console.log('list is Empty');
+            console.log('object');
         } else {
             let curr = this.head
             let listValues = ''
@@ -97,6 +101,6 @@ console.log(list.getSize(), 'size of linked list');
 
 // list.print()
 
-list.insert(10, 1)
+list.insert(10,1)
 
 list.print()

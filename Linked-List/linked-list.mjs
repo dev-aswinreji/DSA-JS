@@ -21,7 +21,7 @@ class LinkedList {
         return this.size
     }
 
-    prepend(value) {
+    prepend(value) { 
         const node = new Node(value)
         if (this.isEmpty()) {
             this.head = node

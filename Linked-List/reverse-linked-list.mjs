@@ -23,7 +23,7 @@ class LinkedList {
     getSize() {
         return this.size
     }
-
+    // Insertion at beginning is O(1)
     prepend(value) {
         const node = new Node(value)
         if (this.isEmpty()) {
@@ -34,6 +34,8 @@ class LinkedList {
         }
         this.size++
     }
+
+    // Insertion at end is O(n)
 
     append(value) {
         const node = new Node(value)

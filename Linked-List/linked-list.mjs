@@ -32,41 +32,38 @@ class LinkedList {
         this.size++
     }
 
-    append(value) {
+   insert(value,index){
+    if(index < 0 || index > this.size){
+        return 
+    }
+    if(index === 0){
+        this.prepend(value)
+    }
+    if(index > 0){
         const node = new Node(value)
-        if (this.isEmpty()) {
-            this.head = node
-        }else{
-            let prev = this.head
-            while(prev.next){
+        console.log(node,'node is showing');
+        let prev = this.head
+        for(let i = 0 ; i< index - 1 ; i++){
             prev = prev.next
-            }
-            prev.next = node
-            console.log(prev.next,'prev');
+            console.log('for loop');
         }
+        node.next = prev.next
+        prev.next = node
+    
         this.size++
     }
+   }
 
-    insert(value,index){
-        if(index < 0 || index > this.size){
-            return  
-        }
-        if(index === 0){
-            this.prepend(value)
-        }else{
-            const node = new Node(value)
-            let prev = this.head
-            console.log(prev,'prev abve lop');
-            for(let i = 0; i< index - 1; i++){
-                prev = prev.next
-                console.log(prev,'prev in loop');
-            }
-            node.next = prev.next
-            console.log(prev.next,'prev next');
-            prev.next = node
-            this.size++
-        }
+   append(value){
+    const node = new Node(value)
+    let prev = this.head
+    while(prev.next){
+        prev = prev.next
     }
+    node.next = prev.next
+    prev.next = node
+    
+   }
 
     print() {
         if (this.isEmpty()) {
@@ -92,8 +89,11 @@ console.log(list.getSize(), 'size of linked list');
 
 list.prepend(7)
 list.prepend(8)
-list.prepend(9)
-list.prepend(10)
+
+list.append(1)
+
+list.prepend(2)
+
 
 console.log(list.isEmpty(), 'is list Empty');
 console.log(list.getSize(), 'size of linked list');
@@ -101,6 +101,6 @@ console.log(list.getSize(), 'size of linked list');
 
 // list.print()
 
-list.insert(10,2)
+list.insert(10,1)
 
 list.print()

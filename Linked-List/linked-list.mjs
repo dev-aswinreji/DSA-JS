@@ -90,7 +90,7 @@ class LinkedList {         // Creating a LinkedList class with head and its size
         return removeNode.value
     }
 
-    removeValue(value) {
+    removeValue(value) {         // Remove node using values 
         if (this.isEmpty()) {
             return null
         }
@@ -104,13 +104,34 @@ class LinkedList {         // Creating a LinkedList class with head and its size
             while (prev.next && prev.next.value !== value) {
                 prev = prev.next
             }
-            if(prev.next){
+            if (prev.next) {
                 removeNode = prev.next
                 prev.next = removeNode.next
                 this.size--
                 return value
             }
             return null
+
+        }
+    }
+
+    search(value) {             // Search value in a node and returning the index
+        if (this.isEmpty()) {
+            return -1
+        } else {
+            let curr = this.head
+            let i = 0
+            console.log(curr, 'curr is showing');
+            while (curr) {
+                if (curr.value === value) {
+                    console.log(curr, 'curr is showing in if case');
+                    return i
+                }
+                curr = curr.next
+                i++
+            }
+
+            return -1
 
         }
     }
@@ -152,3 +173,6 @@ console.log(list.getSize());
 console.log(list.removeValue(4));
 
 list.print()
+
+console.log(list.search(2));
+

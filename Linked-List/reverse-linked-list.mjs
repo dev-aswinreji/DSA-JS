@@ -94,6 +94,8 @@ class LinkedList {
         let removeNode
         if (this.head.value === value) {
             this.head = this.head.next
+            this.size--
+            return value
         } else {
             let prev = this.head
             while (prev.value && prev.next.value !== 0) {
@@ -101,6 +103,8 @@ class LinkedList {
             }
             removeNode = prev.next
             prev.next = removeNode.next
+            this.size--
+            return value
         }
     }
 
@@ -149,3 +153,5 @@ list.removeUsingIndex(3)
 list.removeUsingValues(6)
 list.reverseList()
 list.print()
+
+console.log(list.getSize());

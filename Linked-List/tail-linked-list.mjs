@@ -113,5 +113,5 @@ list.removeFromEnd()
 list.removeFromFront()
 
 list.print()
-
+ 
 console.log(list.getSize());

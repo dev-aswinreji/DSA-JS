@@ -24,7 +24,7 @@ class LinkedList {         // Creating a LinkedList class with head and its size
 
 
     prepend(value) {             // It add values in the beginning of list   Big-O = O(1)
-                                // So time complexity is contant
+        // So time complexity is contant
         const node = new Node(value)
         if (this.isEmpty()) {
             this.head = node
@@ -35,31 +35,31 @@ class LinkedList {         // Creating a LinkedList class with head and its size
         this.size++
     }
 
-    append(value){              // It add values at the end of list  Big-O = O(n)
+    append(value) {              // It add values at the end of list  Big-O = O(n)
         const node = new Node(value)  // Time complexity is linear due to while loop 
-        if(this.isEmpty()){
+        if (this.isEmpty()) {
             this.head = node
-        }else{
+        } else {
             let prev = this.head
-            while(prev.next){
+            while (prev.next) {
                 prev = prev.next
             }
             prev.next = node
         }
         this.size++
     }
- 
-    insert(value,index){                      // It insert value in the linked list
-        if(index < 0 || index > this.size){    // Time complexity is contant adding in beginning 
+
+    insert(value, index) {                      // It insert value in the linked list
+        if (index < 0 || index > this.size) {    // Time complexity is contant adding in beginning 
             console.log('provide the actual index');
-            return 
+            return
         }
-        if(index === 0){
+        if (index === 0) {
             this.prepend(value)
-        }else{
+        } else {
             const node = new Node(value)
             let prev = this.head
-            for(let i = 0; i< index - 1; i++){
+            for (let i = 0; i < index - 1; i++) {
                 prev = prev.next
             }
             node.next = prev.next
@@ -68,19 +68,19 @@ class LinkedList {         // Creating a LinkedList class with head and its size
         this.size++
     }
 
-    remove (index){                  // Remove values from linked list 
-        if(index < 0 || index >= this.size){
+    remove(index) {                  // Remove values from linked list 
+        if (index < 0 || index >= this.size) {
             console.log('Provide actual index');
             return
         }
-        let removeNode 
+        let removeNode
 
-        if(index === 0){
+        if (index === 0) {
             removeNode = this.head
             this.head = this.head.next
-        }else{
+        } else {
             let prev = this.head
-            for(let i = 0 ; i< index -1 ; i++){
+            for (let i = 0; i < index - 1; i++) {
                 prev = prev.next
             }
             removeNode = prev.next
@@ -88,6 +88,31 @@ class LinkedList {         // Creating a LinkedList class with head and its size
         }
         this.size--
         return removeNode.value
+    }
+
+    removeValue(value) {
+        if (this.isEmpty()) {
+            return null
+        }
+        if (this.head.value === value) {
+            this.head = this.head.next
+            this.size--
+            return value
+        } else {
+            let prev = this.head
+            let removeNode
+            while (prev.next && prev.next.value !== value) {
+                prev = prev.next
+            }
+            if(prev.next){
+                removeNode = prev.next
+                prev.next = removeNode.next
+                this.size--
+                return value
+            }
+            return null
+
+        }
     }
 
     print() {               // It print the list of value in the linked list
@@ -117,9 +142,13 @@ list.prepend(5)
 
 list.append(2)
 
-list.insert(12,2)
+list.insert(12, 2)
 
 list.remove(0)
 list.print()
 
 console.log(list.getSize());
+
+console.log(list.removeValue(4));
+
+list.print()

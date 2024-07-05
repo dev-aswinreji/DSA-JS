@@ -32,38 +32,65 @@ class LinkedList {
         this.size++
     }
 
-   insert(value,index){
-    if(index < 0 || index > this.size){
-        return 
-    }
-    if(index === 0){
-        this.prepend(value)
-    }
-    if(index > 0){
+
+
+    append(value) {
         const node = new Node(value)
-        console.log(node,'node is showing');
         let prev = this.head
-        for(let i = 0 ; i< index - 1 ; i++){
+        while (prev.next) {
             prev = prev.next
-            console.log('for loop');
         }
         node.next = prev.next
         prev.next = node
-    
-        this.size++
-    }
-   }
 
-   append(value){
-    const node = new Node(value)
-    let prev = this.head
-    while(prev.next){
-        prev = prev.next
     }
-    node.next = prev.next
-    prev.next = node
-    
-   }
+
+    insert(value, index) {
+        if (index < 0 || index > this.size) {
+            return
+        }
+        if (index === 0) {
+            this.prepend(value)
+        }
+        if (index > 0) {
+            const node = new Node(value)
+            console.log(node, 'node is showing');
+            let prev = this.head
+            for (let i = 0; i < index - 1; i++) {
+                prev = prev.next
+                console.log('for loop');
+            }
+            node.next = prev.next
+            prev.next = node
+
+            this.size++
+        }
+    }
+
+    remove(index) {
+        if (index < 0 || index >= this.size) {
+            return null
+        }
+        let removeNode
+        if (index === 0) {
+            removeNode = this.head
+            console.log(removeNode,'removeNode');
+            this.head = this.head.next
+        }else{
+            let prev = this.head
+            console.log(prev,'prev is showing')
+            for(let i = 0 ; i< index -1;i++){
+                prev = prev.next
+            }
+            console.log(prev,'prev is showing outside loop');
+            console.log(prev.next ,'prev next');
+            removeNode = prev.next 
+            prev.next = removeNode.next
+        }
+        this.size--
+        return removeNode.value
+
+    }
 
     print() {
         if (this.isEmpty()) {
@@ -101,6 +128,7 @@ console.log(list.getSize(), 'size of linked list');
 
 // list.print()
 
-list.insert(10,1)
-
+list.insert(10, 1)
+list.remove(2)
+console.log(list.remove(2));
 list.print()

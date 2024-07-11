@@ -38,9 +38,13 @@ class DoublyLinkedList {
 
     shift() {
         if (this.isEmpty()) {
-            this.head = null
-            this.tail = null
-        } else {
+          console.log('List is empty')
+        } 
+      if(this.size === 1) {
+          this.head = null
+        this.tail = null
+      }else{
+
             let secondNode = this.head.next
             this.head = secondNode
             this.head.prev = null
@@ -119,11 +123,11 @@ class DoublyLinkedList {
             }
             // 30 20 10
             let removingIndex = curr
-            removingIndex.next.prev = removingIndex.prev
             removingIndex.prev.next = removingIndex.next
+            removingIndex.next.prev = removingIndex.prev
             removingIndex.prev = null
             removingIndex.next = null
-            return -1
+            this.size--
         }
     }
 

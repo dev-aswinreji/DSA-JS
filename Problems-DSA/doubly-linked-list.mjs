@@ -37,6 +37,20 @@ class LinkedList{
     this.length++
   }
 
+  append(value){
+    const newNode = new Node(value)
+    if(this.isEmpty()){
+      this.head = newNode
+      this.tail = newNode
+    }else{
+      let lastNode = this.tail
+      lastNode.next = newNode
+      newNode.prev = lastNode
+      this.tail = newNode
+    }
+    this.length++
+  }
+
   insert(value,index){
     if(index < 0 || index > this.length){
       console.log('Invalid index');
@@ -59,13 +73,14 @@ class LinkedList{
     }
   }
 
+
+
   print(){
     if(this.isEmpty()){
       console.log('List is empty');
       return 
     }else{
       let curr = this.head
-      console.log(curr,'what ');
       let list = ''
 
       while(curr){
@@ -83,6 +98,8 @@ const list = new LinkedList()
 list.prepend(10)
 
 list.prepend(20)
+
+list.append(5)
 
 list.insert(15,1)
 

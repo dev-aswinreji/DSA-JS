@@ -1,22 +1,27 @@
 
-const array = [3, 5, 2, 4, 8]
+const array = [6, 0, 3, 5]
 
-function bubbleSort(arr){
-    let swapped 
-    do {
+function bubbleSort(arr) {
+
+    let swapped = true
+    while (swapped) {
         swapped = false
-        for (let i = 0; i < arr.length -1; i++) {
-            if(arr[i] > arr[i+1]){
+
+        for (let i = 0; i < arr.length - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
                 let temp = arr[i]
-                arr[i] = arr[i+1]
-                arr[i+1] = temp
+                arr[i] = arr[i + 1]
+                arr[i + 1] = temp
                 swapped = true
             }
         }
-    } while(swapped)
+    }
+    console.log(arr,'arr')
+
 }
 
 bubbleSort(array)
-console.log(array,'array value');
+
+
 
 // Big-O is O(n^2)

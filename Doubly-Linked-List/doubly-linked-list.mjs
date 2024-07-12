@@ -131,8 +131,26 @@ class DoublyLinkedList {
         }
     }
 
-    removeNodeUsingValue(){
-        
+    removeNodeUsingValue(value){
+      if(this.isEmpty()){
+        console.log('List is empty')
+      }else if(this.head.value === value){
+        this.shift()
+      }else  if(this.tail.value  === value){
+        this.pop()
+      }else{
+       let curr = this.head
+        while(curr && curr.value !== value){
+          curr = curr.next
+        }
+        let prevNode  = curr.prev
+        let nextNode = curr.next
+        prevNode.next = nextNode
+        nextNode.prev = prevNode
+        curr.prev = null
+        curr.next = null
+      this.size--
+      }
     }
 
     print() {
@@ -164,8 +182,8 @@ list.unshift(30)
 // list.insert(15, 1)
 
 // list.print()
-list.removeNodeUsingIndex(1)
-
+//list.removeNodeUsingIndex(1)
+list.removeNodeUsingValue(10)
 list.print()
 
 console.log(list.getSize());

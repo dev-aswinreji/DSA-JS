@@ -18,6 +18,10 @@ class Queue {
     }
 
     dequeue() {
+        if(this.rear === 0){
+            console.log('Queue is empty');
+            return
+        }
         const item = this.items[this.front]
         delete this.items[this.front]
         this.front++
@@ -45,15 +49,15 @@ const queue = new Queue()
 
 console.log(queue.isEmpty());
 
-queue.print()
+// queue.print()
 
-queue.enqueue(40)
+// queue.enqueue(40)
 
-queue.print()
+// queue.print()
 
-queue.enqueue(50)
+// queue.enqueue(50)
 
-queue.print()
+// queue.print()
 
 queue.dequeue()
 

@@ -1,47 +1,60 @@
-
-
 class QueueUsingStack {
     constructor() {
-     this.s1 = []
-     this.s2 = []   
+        this.stack1 = []
+        this.stack2 = []
     }
 
-    enQueue(value){
-        while(this.s1.length !==0){
-            this.s2.push(this.s1.pop()) // 2 in s2
+    enqueue(value) {
+        this.stack1.push(value)
+    }
+
+    dequeue() {
+        if (this.stack1.length !== 0) {
+            while (this.stack1.length > 0) {
+                this.stack2.push(this.stack1.pop())
+            }
+            return this.stack2.pop()
         }
+        // console.log('queue is empty');
+        // return 
+    }
 
-        this.s1.push(value)  // 2 then 2 cleared and added 3
-        console.log(this.s1,'s1');
-
-        while(this.s2.length !== 0){
-            this.s1.push(this.s2.pop())   // 3 then 2
+    peek() {
+        if (this.stack1.length !== 0) {
+            while (this.stack1.length > 0) {
+                this.stack2.push(this.stack1.pop())
+            }
+            return this.stack2[this.stack2.length - 1]
         }
     }
 
-    deQueue(){
-        if(this.s1.length === 0){
-            return null
-        }
-        let value = this.s1[this.s1.length - 1]
-        console.log(this.s1,'s1 is showing');
-        this.s1.pop()
-        return value
+    isEmpty() {
+        return this.stack1.length === this.stack2.length
     }
 
-    print(){
-        for(let i = 0; i< this.s1.length; i++){
-            console.log(this.s1[i]);
+    print() {
+        let result = [];
+
+        for (let i = this.stack2.length - 1; i >= 0; i--) {
+            result.push(this.stack2[i]);
         }
+        for (let i = 0; i < this.stack1.length; i++) {
+            result.push(this.stack1[i]);
+        }
+
+        console.log("Queue contents:", result);
     }
 }
 
 
-const queue = new QueueUsingStack()
+const qs = new QueueUsingStack()
 
-queue.enQueue(2)
-queue.enQueue(3)
-queue.enQueue(4)
+// qs.dequeue()
 
-console.log(queue.deQueue(),'removed Value');
-queue.print()
+qs.enqueue(50)
+
+qs.enqueue(100)
+
+qs.dequeue()
+
+qs.print()

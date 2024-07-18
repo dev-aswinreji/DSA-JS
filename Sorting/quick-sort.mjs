@@ -14,7 +14,6 @@ function quickSort(arr,low,high) {
   }
 }
 
-
 function partition(arr,low,high) {
  
   let pivot = arr[high]

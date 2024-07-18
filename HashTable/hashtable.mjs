@@ -10,7 +10,7 @@ class HashTable {
     for (let i = 0; i < key.length; i++) {
       index += key.charCodeAt(i)
     }
-
+    console.log(index,'index is showing');
     return index % this.size
   }
 
@@ -66,16 +66,17 @@ class HashTable {
 
 const table = new HashTable(40)
 
-table.set("name","bruce")
+table.set(1234,"bruce")
 
 console.log(table.get("name"));
 
 table.set("name","batman")
 
-console.log(table.get("name"));
+console.log(table.get(1234));
 table.display()
 table.remove("name")
 
 console.log(table.get("name"));
+table.set(8,"bruce")
 
 table.display()

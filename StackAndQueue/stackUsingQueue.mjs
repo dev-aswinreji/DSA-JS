@@ -1,66 +1,43 @@
-class Stack {
+class StackUsingQueue {
     constructor() {
-        this.q1 = []
-        this.q2 = []
+        this.queue1 = []
+        this.queue2 = []
     }
 
-    push(value) {
+    push(value){
 
-        this.q2.push(value)
-        console.log(this.q2,'q2'); // 300 200 100
-        while (this.q1.length !== 0) {
-            console.log(this.q2,'new value q2'); //200 100
-            this.q2.push(this.q1[0]) //300 200
-            this.q1.shift() 
+        this.queue2.push(value)
+
+        while(this.queue1.length !== 0){
+            this.queue2.push(this.queue1[0])
+            this.queue1.shift()
         }
 
-        this.q = this.q1
-        this.q1 = this.q2
-        this.q2 = this.q
-        console.log(this.q2,'empty array ');
+        let temp = this.queue1
+        this.queue1 = this.queue2
+        this.queue2 = temp
     }
 
-    pop() {
-        if (this.q1.length === 0)
-            return
-        this.q1.shift()
+
+    pop(){
+        return this.queue1.shift()
     }
 
-    top() {
-        if(this.q1.length === 0)
-            return -1
-        return this.q1[0]
-    }
-
-    size(){
-        console.log(this.q1.length);
-    }
-
-    isEmpty(){
-        return this.q1.length === 0
-    }
-
-    front() {
-        return this.q1[0]
-    }
-
-    print(){
-        for(let i = 0 ; i<this.q1.length;i++){
-            console.log(this.q1[i],'showing');
-        }
+    top(){
+        return this.queue1[0]
     }
 }
 
 
-const s = new Stack()
+const sq = new StackUsingQueue()
 
-console.log(s.top());
+sq.push(100)
 
-s.push(300)
-s.push(200)
-s.push(100)
-s.pop()
+sq.push(200)
 
-console.log(s.top());
+sq.push(300)
 
-s.print()
+console.log(sq.pop(),'popped item');
+
+
+console.log(sq.top(),'top item is showing');

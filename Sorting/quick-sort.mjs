@@ -8,7 +8,6 @@ function quickSort(arr,low,high) {
   
   if(low < high){
     let pi = partition(arr,low,high)
-    return
     quickSort(arr,pi + 1, high)
     quickSort(arr,low,pi - 1)
   }

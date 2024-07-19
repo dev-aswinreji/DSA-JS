@@ -17,6 +17,10 @@ class Stack {
         return this.size === 0
     }
 
+    getSize(){
+        return this.size 
+    }
+
     push(value) {
         const newNode = new Node(value)
         if (this.isEmpty()) {
@@ -47,7 +51,7 @@ class Stack {
         }
         this.top = prev
     }
-    
+
     print() {
         let curr = this.top
         let str = ''

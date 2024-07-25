@@ -60,47 +60,90 @@ class BinarySearchTree {
 
     preOrder(root) {
 
-        
+
         if (root) {
-         console.log(root.value);
-         this.preOrder(root.left)
-         this.preOrder(root.right)
+            console.log(root.value);
+            this.preOrder(root.left)
+            this.preOrder(root.right)
         }
 
     }
 
-    inOrder(root){
-        if(root){
+    inOrder(root) {
+        if (root) {
             this.inOrder(root.left)
             console.log(root.value);
             this.inOrder(root.right)
         }
     }
 
-    postOrder(root){
-        if(root){
+    postOrder(root) {
+        if (root) {
             this.postOrder(root.left)
             this.postOrder(root.right)
             console.log(root.value);
         }
     }
 
-    levelOrder(root){
+    levelOrder(root) {
         const queue = []
         queue.push(this.root)
-        while(queue.length){
+        while (queue.length) {
             let curr = queue.shift()
             console.log(curr.value);
-            if(curr.left){
+            if (curr.left) {
                 queue.push(curr.left)
             }
-            if(curr.right){
+            if (curr.right) {
                 queue.push(curr.right)
             }
         }
     }
 
-    
+    minNode(root) {
+        if (!root.left) {
+            return root.value
+        } else {
+            return this.minNode(root.left)
+        }
+    }
+
+    maxNode(root) {
+        if (!root.right) {
+            return root.value
+        } else {
+            return this.maxNode(root.right)
+        }
+    }
+
+    delete(value) {
+        this.root = this.deleteNode(this.root, value)
+    }
+
+
+    deleteNode(root, value) {
+        if (root === null) {
+            return root
+        }
+        if (value < root.value) {
+            root.left = this.deleteNode(root.left, value)
+        } else if(value > root.value) {
+            root.right = this.deleteNode(root.right, value)
+        } else {
+            if(!root.left && !root.right){
+                return null
+            }
+            if(!root.left){
+                return root.right
+            }else if(!root.right){
+                return root.left
+            }
+
+            root.value = this.minNode(root.right)
+            root.right = this.deleteNode(root.right,root.value)
+        }
+        return root
+    }
 
     print() {
         console.log(this.root)
@@ -110,15 +153,18 @@ class BinarySearchTree {
 
 const bst = new BinarySearchTree()
 
-bst.print()
+// bst.print()
 
 bst.insert(10)
 bst.insert(5)
 
 bst.insert(15)
-bst.insert(7)
+bst.insert(24)
+// bst.insert(7)
 bst.insert(3)
 
+// bst.insert(21)
+// bst.insert(24)
 // bst.search(bst.root, 6)
 // bst.preOrder(bst.root)
 // bst.print()
@@ -126,4 +172,19 @@ bst.insert(3)
 
 // bst.postOrder(bst.root)
 
-bst.levelOrder(bst.root)
+// bst.levelOrder(bst.root)
+
+// console.log(bst.maxNode(bst.root))
+
+// console.log(bst.minNode(bst.root));
+// bst.print()
+
+
+bst.levelOrder()
+console.log('first call ');
+
+bst.delete(3)
+bst.levelOrder()
+
+console.log(3 < 3);
+console.log(3 > 3);

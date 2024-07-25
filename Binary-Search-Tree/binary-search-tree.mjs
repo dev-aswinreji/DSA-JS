@@ -51,9 +51,9 @@ class BinarySearchTree {
                 console.log(value, 'found');
                 return
             } else if (value < root.value) {
-                this.search(root.left, value)
+                return this.search(root.left, value)
             } else {
-                this.search(this.right, value)
+                return this.search(this.right, value)
             }
         }
     }

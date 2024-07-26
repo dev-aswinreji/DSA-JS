@@ -121,7 +121,7 @@ class BinarySearchTree {
     }
 
 
-    deleteNode(root, value) {
+    deleteNode(root, value) {                                // Delete node is toughest one we need to iterate through each recursive call inorder to understand
         if (root === null) {
             return root
         }
@@ -159,9 +159,11 @@ bst.insert(10)
 bst.insert(5)
 
 bst.insert(15)
-bst.insert(24)
+bst.insert(7)
 // bst.insert(7)
 bst.insert(3)
+bst.insert(6)
+bst.insert(8)
 
 // bst.insert(21)
 // bst.insert(24)
@@ -183,7 +185,7 @@ bst.insert(3)
 bst.levelOrder()
 console.log('first call ');
 
-bst.delete(3)
+bst.delete(5)
 bst.levelOrder()
 
 console.log(3 < 3);

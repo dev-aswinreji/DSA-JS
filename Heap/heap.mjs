@@ -2,9 +2,9 @@
 
 class Node {
   constructor (value) {
+  this.left = null
   this.value = value 
   this.right = null
-  this.left = null
   }
 }
 
@@ -21,28 +21,22 @@ class minHeap {
     if(this.isEmpty()){
       this.root = newNode
     }else{
-    this.insertNode(this.root,newNode)    
+      this.insertNode(this.root,newNode)
     }
   }
 
   insertNode(root,newNode){
-    if(newNode <= root.value ){
-     if(root.left === null){
-       root.left = newNode
-     }else{
-       this.insertNode(root.left,newNode)
-     }
-
-    }else{
-      if(root.right === null){
+    if(root.value <= newNode.value){
+      if(!root.left){
+      root.left = newNode
+      }else if(!root.right){
         root.right = newNode
-      }else{
-        this.insertNode(root.right,newNode)
       }
+      insertNode(root.left,newNode)
+    }else{
+
     }
   }
-
-
   print(){
   console.log(this.root)
   }
@@ -54,5 +48,11 @@ const heap = new minHeap()
 heap.insert(10)
 heap.insert(20)
 heap.insert(30)
+heap.insert(50)
+heap.insert(60)
+heap.insert(5)
+heap.insert(5)
+heap.insert(5)
+heap.insert(5)
 
 heap.print()
